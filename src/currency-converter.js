@@ -14,7 +14,10 @@
 // In this step we will capture the command line  information supplied by the user.
 
 // We will store each piece of information in a dedicated variable for later use.
-
+const arguments = process.argv;
+const amount = arguments[2];
+const initialCurrency = arguments[3];
+const targetCurrency = arguments[4];
 
 
 // --------------------------------------------------
