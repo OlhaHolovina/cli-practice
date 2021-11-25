@@ -19,7 +19,6 @@ const amount = arguments[2];
 const initialCurrency = arguments[3];
 const targetCurrency = arguments[4];
 
-
 // --------------------------------------------------
 // Step 2: Validate user input
 // --------------------------------------------------
@@ -28,8 +27,20 @@ const targetCurrency = arguments[4];
 // If any of the required information is missing, display a meaningful message
 // and exit the program.
 
+if (amount === undefined || amount < 0){
+    console.error(`Whoops, the amount must be a number greater than 0, Received ${amount}`);
+    process.exit();
+}
 
+if (initialCurrency === undefined){
+    console.error(`Whoops, you must provide a value for the initial currency, Received ${initialCurrency}`);
+    process.exit();
+}
 
+if (targetCurrency === undefined){
+    console.error(`Whoops, you must provide a value for the target currency, Received ${targetCurrency}`);
+    process.exit();
+}
 // --------------------------------------------------
 // Step 3: Define currency conversion rates
 // --------------------------------------------------
