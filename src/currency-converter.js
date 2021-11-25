@@ -83,8 +83,13 @@ if(supportedCurrencies.includes(targetCurrency) === false){
 // information, and that a rate exists for each of the currencies.
 
 // Now we will compute the rate, apply it to the amount, and capture the result.
+let convertedAmount;
 
-
+if(initialCurrency === 'USD' && targetCurrency === 'CAD'){
+    convertedAmount = amount / CAD;
+} else if(initialCurrency === 'CAD' && targetCurrency === 'USD'){
+    convertedAmount = amount * CAD;
+}
 
 // --------------------------------------------------
 // Step 6: Display results
@@ -93,3 +98,6 @@ if(supportedCurrencies.includes(targetCurrency) === false){
 
 // This message should also include the original amount and currency information
 // supplied by the user.
+// todo show better messages and make a good scaled decision for step 5
+console.log(`You submitted the following amount: ${amount}`);
+console.log(`The converted amount is: ${convertedAmount}`);
