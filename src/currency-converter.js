@@ -11,6 +11,7 @@
 const {validateAmount} = require("../validator-functions/validateAmount");
 const {validateCurrency} = require("../validator-functions/validateCurrency");
 const {validateCurrencySupport} = require("../validator-functions/validateCurrencySupport");
+const {validateCalculation} = require("../validator-functions/validateCalculation");
 
 try{
     // --------------------------------------------------
@@ -75,9 +76,7 @@ try{
 // Now we will compute the rate, apply it to the amount, and capture the result.
 
     const currentRelation = relations[`${initialCurrency}to${targetCurrency}`];
-    if (currentRelation === undefined) {
-        throw new Error(`Something wrong with the calculation, you must add a property to the relations object`);
-    }
+    validateCalculation(currentRelation);
 
     const convertedAmount = currentRelation * amount;
 // --------------------------------------------------
