@@ -47,11 +47,11 @@ try{
 
 // The conversion rates do not have to be accurate, athough this resource contains
 // up-to-date rate information: https://www.xe.com/
-//to add a new currency we must add it in  supportedCurrencies nd in relations
+//to add a new currency we must add it in  supportedCurrencies and in relations object
     const supportedCurrencies = ['USD', 'CAD'];
     const relations = {
-        USDtoCAD: 1.3,
-        CADtoUSD: 1.3,
+        USDtoCAD: 1.27,
+        CADtoUSD: 0.78,
     }
 
 // --------------------------------------------------
@@ -74,14 +74,12 @@ try{
 
 // Now we will compute the rate, apply it to the amount, and capture the result.
 
-    // 1 step
-    const howManyUSD = supportedCurrencies[initialCurrency] * amount;
+    const currentRelation = relations[`${initialCurrency}to${targetCurrency}`];
+    if (currentRelation === undefined) {
+        throw new Error(`Something wrong with the calculation, you must add a property to the relations object`);
+    }
 
-    // 2 step
-    const convertedAmount = howManyUSD * 1;
-
-    console.log(howManyUSD)
-    // console.log(convertedAmount)
+    const convertedAmount = currentRelation * amount;
 // --------------------------------------------------
 // Step 6: Display results
 // --------------------------------------------------
