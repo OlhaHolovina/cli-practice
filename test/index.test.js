@@ -23,16 +23,27 @@ describe('validateAmount()', () => {
   });
 
   test('should throw an error if amount is undefined', () => {
-    const result = validateAmount;
     expect(() => {
       validateAmount(undefined);
     }).toThrow(Error);
   });
 
   test('should throw an error if amount is less than 0', () => {
-    const result = validateAmount;
     expect(() => {
       validateAmount(-2);
+    }).toThrow(Error);
+  });
+});
+
+describe('validateCurrency()', () => {
+  test('should return the currency if everything is ok', () => {
+    const result = validateCurrency('CAD');
+    expect(result).toBe('CAD');
+  });
+
+  test('should throw an error if currency is undefined', () => {
+    expect(() => {
+      validateCurrency(undefined);
     }).toThrow(Error);
   });
 });
