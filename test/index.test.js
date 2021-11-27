@@ -76,3 +76,10 @@ describe('validateCalculation()', () => {
     }).toThrow(Error);
   });
 });
+
+describe('calculateConversion()', () => {
+  test('should return multiplication of 2 parameters', () => {
+    const result = calculateConversion(5, 5);
+    expect(result).toBe(25);
+  });
+});
