@@ -1,6 +1,6 @@
 const validateCurrencySupport = (supportedCurrencies, currency, name = '') => {
     if(supportedCurrencies[currency] === undefined) {
-        `Whoops, the ${name} currency in not supported, Received ${currency}. Supported currencies are: ${supportedCurrencies.CAD}, ${supportedCurrencies.USD}`
+        throw new Error(`Whoops, the ${name} currency in not supported, Received ${currency}. Supported currencies are: CAD, USD`);
     }
 }
 
