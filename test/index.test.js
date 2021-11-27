@@ -62,3 +62,17 @@ describe('validateCurrencySupport()', () => {
     }).toThrow(Error);
   });
 });
+
+describe('validateCalculation()', () => {
+  test('should return the currency if everything is ok', () => {
+    const result = validateCalculation(25);
+    expect(result).toBe(25);
+  });
+
+
+  test('should throw an error if there is no such relations between currencies', () => {
+    expect(() => {
+      validateCalculation(undefined);
+    }).toThrow(Error);
+  });
+});
