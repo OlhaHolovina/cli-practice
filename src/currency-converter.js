@@ -86,9 +86,10 @@ try{
 
 // This message should also include the original amount and currency information
 // supplied by the user.
-// todo show better messages
-    console.log(`You submitted the following amount: ${amount}`);
-    console.log(`The converted amount is: ${convertedAmount}`);
+    console.log('-------------------------RESULT-----------------------')
+    console.log(`You submitted the following amount: ${amount} ${initialCurrency}`);
+    console.log(`The converted amount is: ${convertedAmount} ${targetCurrency}`);
+    console.log('-------------------------END OF RESULT----------------')
 } catch (e){
     console.log(e.message);
     process.exit();
