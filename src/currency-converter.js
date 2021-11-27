@@ -15,7 +15,9 @@ const {validateCalculation} = require("../validator-functions/validateCalculatio
 const {calculateConversion} = require("./calculateConversion");
 
 try{
-    // --------------------------------------------------
+    console.log('Hello, you are using the best currency converter in the world :)');
+    console.log('to use awesome calculator, please, follow the link https://github.com/OlhaHolovina/shell-scripting-practice');
+// --------------------------------------------------
 // Step 1: Capture user input
 // --------------------------------------------------
 // In this step we will capture the command line  information supplied by the user.
