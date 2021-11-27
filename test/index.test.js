@@ -16,10 +16,23 @@ const {validateCurrencySupport} = require("../validator-functions/validateCurren
 const {validateCalculation} = require("../validator-functions/validateCalculation");
 const {calculateConversion} = require("../src/calculateConversion");
 
-describe('myCoolFunction()', () => {
-  test('should return the message: "Wow, what a cool function"', () => {
-    const result = myCoolFunction();
+describe('validateAmount()', () => {
+  test('should return the initial amount if everything is ok', () => {
+    const result = validateAmount(25);
+    expect(result).toBe(25);
+  });
 
-    expect(result).toBe('Wow, what a cool function');
+  test('should throw an error if amount is undefined', () => {
+    const result = validateAmount;
+    expect(() => {
+      validateAmount(undefined);
+    }).toThrow(Error);
+  });
+
+  test('should throw an error if amount is less than 0', () => {
+    const result = validateAmount;
+    expect(() => {
+      validateAmount(-2);
+    }).toThrow(Error);
   });
 });

@@ -36,7 +36,7 @@ try{
 
     validateCurrency(targetCurrency, 'target');
     validateCurrency(initialCurrency, 'initial');
-    validateAmount(amount, initialCurrency, targetCurrency);
+    validateAmount(amount);
 
 // --------------------------------------------------
 // Step 3: Define currency conversion rates
