@@ -12,6 +12,7 @@ const {validateAmount} = require("../validator-functions/validateAmount");
 const {validateCurrency} = require("../validator-functions/validateCurrency");
 const {validateCurrencySupport} = require("../validator-functions/validateCurrencySupport");
 const {validateCalculation} = require("../validator-functions/validateCalculation");
+const {calculateConversion} = require("./calculateConversion");
 
 try{
     // --------------------------------------------------
@@ -78,7 +79,7 @@ try{
     const currentRelation = relations[`${initialCurrency}to${targetCurrency}`];
     validateCalculation(currentRelation);
 
-    const convertedAmount = currentRelation * amount;
+    const convertedAmount = calculateConversion(currentRelation, amount);
 // --------------------------------------------------
 // Step 6: Display results
 // --------------------------------------------------
