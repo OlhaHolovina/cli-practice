@@ -47,3 +47,18 @@ describe('validateCurrency()', () => {
     }).toThrow(Error);
   });
 });
+
+describe('validateCurrencySupport()', () => {
+  test('should return the currency if everything is ok', () => {
+    const supportedCurrencies = ['USD', 'CAD'];
+    const result = validateCurrencySupport(supportedCurrencies, 'USD');
+    expect(result).toBe('USD');
+  });
+
+  test('should throw an error if currency is not supported', () => {
+    expect(() => {
+      const supportedCurrencies = ['USD', 'CAD'];
+      validateCurrencySupport(supportedCurrencies, 'EUR');
+    }).toThrow(Error);
+  });
+});
