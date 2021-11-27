@@ -10,6 +10,7 @@
 
 const {validateAmount} = require("../validator-functions/validateAmount");
 const {validateCurrency} = require("../validator-functions/validateCurrency");
+const {validateCurrencySupport} = require("../validator-functions/validateCurrencySupport");
 
 try{
     // --------------------------------------------------
@@ -46,9 +47,13 @@ try{
 
 // The conversion rates do not have to be accurate, athough this resource contains
 // up-to-date rate information: https://www.xe.com/
-    const USD = 1;
-    const CAD = 0.9;
-
+// to make the code scalable, we count in 2 steps and set USD as a 1;
+//     1 step: convert initial currency to USD
+//     2 step: convert USD to a target currency from the 1st step value
+    const supportedCurrencies = {
+        USD: 1,
+        CAD: 1.3,
+    }
 
 // --------------------------------------------------
 // Step 4: Ensure that a conversion rate exists
@@ -58,17 +63,9 @@ try{
 
 // If the user supplies an invalid initial or target currency, display a meaningful
 // warning message and exit the program.
-    const supportedCurrencies = ['USD', 'CAD'];
 
-    if(supportedCurrencies.includes(initialCurrency) === false){
-        console.error(`Whoops, the initial currency in not supported currency, Received ${initialCurrency}. Supported currencies are: ${supportedCurrencies}`);
-        process.exit();
-    }
-
-    if(supportedCurrencies.includes(targetCurrency) === false){
-        console.error(`Whoops, the target currency in not supported currency, Received ${targetCurrency}. Supported currencies are: ${supportedCurrencies}`);
-        process.exit();
-    }
+    validateCurrencySupport(supportedCurrencies, initialCurrency, 'initial');
+    validateCurrencySupport(supportedCurrencies, targetCurrency, 'target');
 
 // --------------------------------------------------
 // Step 5: Perform conversion
