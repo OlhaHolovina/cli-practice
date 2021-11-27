@@ -47,12 +47,11 @@ try{
 
 // The conversion rates do not have to be accurate, athough this resource contains
 // up-to-date rate information: https://www.xe.com/
-// to make the code scalable, we count in 2 steps and set USD as a 1;
-//     1 step: convert initial currency to USD
-//     2 step: convert USD to a target currency from the 1st step value
-    const supportedCurrencies = {
-        USD: 1,
-        CAD: 1.3,
+//to add a new currency we must add it in  supportedCurrencies nd in relations
+    const supportedCurrencies = ['USD', 'CAD'];
+    const relations = {
+        USDtoCAD: 1.3,
+        CADtoUSD: 1.3,
     }
 
 // --------------------------------------------------
@@ -74,14 +73,15 @@ try{
 // information, and that a rate exists for each of the currencies.
 
 // Now we will compute the rate, apply it to the amount, and capture the result.
-    let convertedAmount;
 
-    if(initialCurrency === 'USD' && targetCurrency === 'CAD'){
-        convertedAmount = amount / CAD;
-    } else if(initialCurrency === 'CAD' && targetCurrency === 'USD'){
-        convertedAmount = amount * CAD;
-    }
+    // 1 step
+    const howManyUSD = supportedCurrencies[initialCurrency] * amount;
 
+    // 2 step
+    const convertedAmount = howManyUSD * 1;
+
+    console.log(howManyUSD)
+    // console.log(convertedAmount)
 // --------------------------------------------------
 // Step 6: Display results
 // --------------------------------------------------
@@ -89,7 +89,7 @@ try{
 
 // This message should also include the original amount and currency information
 // supplied by the user.
-// todo show better messages and make a good scaled decision for step 5
+// todo show better messages
     console.log(`You submitted the following amount: ${amount}`);
     console.log(`The converted amount is: ${convertedAmount}`);
 } catch (e){
