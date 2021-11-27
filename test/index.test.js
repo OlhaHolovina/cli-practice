@@ -10,9 +10,11 @@
 // file. In this case we've defined the function and the corresponding test in the
 // same file for illustrative and learning purposes.
 
-function myCoolFunction() {
-  return 'Wow, what a cool function';
-}
+const {validateAmount} = require("../validator-functions/validateAmount");
+const {validateCurrency} = require("../validator-functions/validateCurrency");
+const {validateCurrencySupport} = require("../validator-functions/validateCurrencySupport");
+const {validateCalculation} = require("../validator-functions/validateCalculation");
+const {calculateConversion} = require("../src/calculateConversion");
 
 describe('myCoolFunction()', () => {
   test('should return the message: "Wow, what a cool function"', () => {
